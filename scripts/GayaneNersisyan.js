@@ -1,187 +1,154 @@
-/*1. Given an array of numbers. Write a function to separate odd and even numbers in
-different arrays.
+/*1. Given a string. Check whether the string is palindrome or not.
 Input Output
-[45, 12, 3, 6, 17, 0] [45, 3, 17]
-[12, 6, 0]
-[1, 3, 5, 9] [1, 3, 5, 9]
-[] */
-let arr1 = [45, 12, 3, 6, 17, 0];
-let arr2 = [1, 3, 5, 9, ]
 
-function count(arr) {
-  let oddNumbers = [];
-  let evenNumbers = [];
+“racecar” “yes”
+“T” “Yes”
+“” “No”
+“palindrome” “No”*/
+let string = "racecar";
 
-  for (let number of arr) {
-    if (number % 2 === 1) {
-      oddNumbers.push(number)
+function checkPalindrome(str) {
+  let ispalindrome = "yes";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== str[str.length - i - 1] {
+        ispalindrome = "No";
+        break
+      }
 
-    } else {
-
-      evenNumbers.push(number)
     }
+    return ispalindrome
+  }
+  console.log(checkPalindrome(string));
+
+ /* 3. Print the following number pattern (write a function)
+1
+12
+123
+1234
+12345
+1234
+123
+12
+1
+    */
+function printRow(number) {
+  let row = "";
+  for (let i = 1; i <= number; i++) {
+    for (let j = 1; j <= i; j++) {
+      row += j;
+   
+    }
+  console.log(row)
+  row = "";
 
   }
-  return evenNumbers,oddNumbers
- 
+  for (let i = number - 1; i >= 1; i--){
+  let row = "";
+  for(let j = 1;j<=i;j++){
+  row+=j;
+  }
+console.log(row)
+
+  }
+  
 }
-console.log(count(arr1));
-
-/*2.Write a function that calculates sum, difference, multiplication and division between
-given array elements depending on passed operation symbol. Write appropriate function
-for each operation.*/
+let number = 5;
+printRow(number);
 
 
-function countSum(arr) {
-    let sum = 0;
-    for (let number of arr) {
-      sum += number;
-  
+/*   4. Print following pattern(write a
+    function)
+
+  *
+    *
+      *
+        */
+    function printStar(number) {
+      for (let i = 0; i < number; i++) {
+        let star = "";
+        for (let j = 0; j < i; j++) {
+          star += "   ";
+        }
+        star += "*";
+        console.log(star)
+      }
     }
-    return sum;
-  }
-  
-  function countDifference(arr) {
-    let result = arr[0]
-    for (let i = 1; i < arr.length; i++) {
-      result -= arr[i];
-    }
-    return result;
-  }
-  let array = [1, 2, 8, 9];
-  console.log(countDifference(array));
-  
-  function countMultipication(arr) {
-    let multipresult = 1;
-    for (let number of arr) {
-      multipresult *= number;
-    }
-    return multipresult;
-  }
-  console.log(countMultipication(array));
-  
-  function resultDivision(arr) {
-    let divisionResult = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-      divisionResult /= arr[i]
-    }
-    return divisionResult;
-  }
-  console.log(resultDivision(array));
-  
- /*Given an object. Invert it (keys become values and values become keys). If there is
-more than key for that given value create an array.
+    printStar(5)
 
-Input Output
+    /* 6. Print following pattern (write a function)
+ * * * * *
+ * * * * *
+ * * * * *
+ */
+function printStar(number) {
+  for (let i = 0; i < number; i++) {
+    let star = "";
+    for (let j = 0; j < number+2; j++) {
+      star += " ";
+      star+="*";
+    }
 
-{ a: ‘1’, b: ‘2’ } { 1: ‘a’, 2: ‘b’ }
-{ a: ‘1’, b: ‘2’, c: ‘2’  } { 1: ‘a’, 2: [‘b’, ‘c’] }fof
-{ a: ‘1’, b: ‘2’, c: ‘2’, d: ‘2’  } { 1: ‘a’, 2: [‘b’, ‘c’, ‘d’] }*/
-let obj1 = {
-    a: '1',
-    b: '2',
+    console.log(star);
   }
-  let obj2 = {
-    a: '1',
-    b: '2',
-    c: '2',
-  }
-  let obj3 = {
-    a: '1',
-    b: '2',
-    C: '2',
-    d: '2',
-  }
-  
-  
-  function invertKey(obj) {
-    let newobj = {}
-    
-    for (let key in obj) {
-    let value = obj[key];
-      if (newobj[value] === undefined) {
-        newobj[value] = key
-  
+}
+printStar(3);
+
+/*5. Print following pattern (write a function)
+
+    *                   *
+         *      *
+            *
+         *        *
+    *                  * */
+function printPattern(number) {
+  for (let i = 0; i < number; i++) {
+    let star = "";
+    for (let j = 0; j < number; j++) {
+      if (i === j||i+j===number-1) {
+        star += "*";
       } else {
-        if (typeof newobj[value] === 'string') {
-          newobj[value] = [newobj[value]]
-          newobj[value].push(key)
-        }
+        star += "  ";
       }
-  
     }
-    return newobj;
-  
+    console.log(star);
   }
-  console.log(invertKey(obj2));
-  /*Given two objects. Write a function that performs shallow compare.
+}
+
+printPattern(7);
+
+
+/*2. Given a string and symbols. Change first symbol by the second one in the string.
+
 Input Output
 
-var a = { a: ‘1’ };
-var b = { a: ‘1’};
-shallowCompare(a, b)
-
-true
-
-var a = { a: ‘1’ };
-var b = { a: ‘1’, b: ‘2’ };
-shallowCompare(a, b)
-
-false
-
-var a = { };
-var b = { };
-shallowCompare(a, b)
-
-true */
-let a ={
-    a:'1',
-    };
-    let b ={
-    a:'1',
-    b:'2'
-    }
-    
-    let c = {
-    a:'1'
-    }
-    
-    function shallowCompare(obj1,obj2){
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
-    if(keys1.length !==keys2.length){
-    return false;
-    }
-    for(let key of keys1){
-    if(obj1[key] !== obj2[key]){
-    return false;
-    }
-    }return true;
-    }
-    
-    
-    console.log(shallowCompare(a,c))
-    /*Write a function which receives two strings and removes appearances of the second
-string from the first one.*/
-function removeRepeatstr(string, removestr) {
+“The results are not recorded yet”, “t”, “w” “The resulws are now recorded yew”
+“does the following code”, “o”, “0” “d0es the f0ll0wing c0de”*/
+function changeFirstsimbol(str1, simbol1, simbol2) {
+  let i = 0;
+  while (i < str1.length) {
+    let match = true
     let result = "";
-    for (let i = 0; i < string.length; i++) {
-      let isMutch = false;
-      for (let j = 0; j < removestr.length; j++) {
-        if(string[i+j]!==removestr[j]){
-        isMutch = true;
+    for (let j = 0; j < str2.length; j++) {
+      if (str1[i + j] !== str2[j]) {
+        match = false;
         break;
-        }
-        
       }
-      if(!isMutch){
-      i += removestr.length-1
-      }else{
-      result += string[i]
+      if (str1[i + j] === simbol1[j]) {
+        result += simbol2;
+        i += simbol1.length;
+      } else {
+        result += str1[i];
+        i++
+
       }
     }
-    return result;
-  }
-  let string1 = "This is some text";
-  let string2 = "is";
-  console.log(removeRepeatstr(string1,string2));
+    
+  }return result;
+  
+}
+
+
+let string1 = "The results are not recorded yet";
+let simbol1 = "t";
+let simbol2 = "w";
+changeFirstsimbol(string1,simbol1,simbol2);
